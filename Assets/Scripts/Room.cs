@@ -42,4 +42,21 @@ public class Room : MonoBehaviour
             doorNumber++;
         }
     }
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            // 将相机目标设置为当前房间
+            CameraController.instance.ChangeRoom(this.transform);
+        }
+    }
+    
+    void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            // 玩家离开房间时不做处理，由进入新房间时触发切换
+        }
+    }
 }

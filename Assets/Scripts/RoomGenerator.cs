@@ -72,11 +72,11 @@ public class RoomGenerator : MonoBehaviour
 
     void Update()
     {
-        //按下任意键获取当前房间名字并重新激活
-        if (Input.anyKeyDown)
-        {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        }
+        // //按下任意键获取当前房间名字并重新激活
+        // if (Input.anyKeyDown)
+        // {
+        //     SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        // }
     }
 
     /// <summary>
