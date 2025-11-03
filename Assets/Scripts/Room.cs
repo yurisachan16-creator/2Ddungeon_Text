@@ -18,11 +18,11 @@ public class Room : MonoBehaviour
         doorDown.SetActive(roomDown);
     }
 
-    public void UpdateRoom()
+    public void UpdateRoom(float xOffset, float yOffset)
     {
         //这里的除于18和9是根据房间的x轴的offset和y轴的offset来的
-        stepToStart = (int)(Mathf.Abs(transform.position.x) / 18) +
-                    (int)(Mathf.Abs(transform.position.y) / 9);
+        stepToStart = (int)(Mathf.Abs(transform.position.x) / xOffset) +
+                    (int)(Mathf.Abs(transform.position.y) / yOffset);
         textStep.text = stepToStart.ToString();
 
         if (roomUp)

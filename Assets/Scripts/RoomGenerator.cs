@@ -118,7 +118,7 @@ public class RoomGenerator : MonoBehaviour
         newRoom.roomLeft = Physics2D.OverlapCircle(roomPosition + new Vector3(-xOffset, 0, 0), 0.2f, roomLayer);
         newRoom.roomRight = Physics2D.OverlapCircle(roomPosition + new Vector3(xOffset, 0, 0), 0.2f, roomLayer);
 
-        newRoom.UpdateRoom();
+        newRoom.UpdateRoom(xOffset, yOffset);
 
         //根据门的数量和位置生成对应的墙体
         switch (newRoom.doorNumber)
@@ -188,7 +188,7 @@ public class RoomGenerator : MonoBehaviour
             case 4:
                 Instantiate(wallType.wallAll, roomPosition, Quaternion.identity);
                 break;
-                
+
         }
     }
 
@@ -259,4 +259,6 @@ public class RoomGenerator : MonoBehaviour
     //获得最大步数的房间以及比它小1的房间列表，在他们当中找到单一出口的房间，获得这个房间。
 
     //特殊情况，生成正方形房间时，最大数的房间会有两个出口，随机选择一个出口生成最终房间。这不是最佳方案，后续可以优化。
+
+    //为每一个预制体的门都添加一个collider2D作为触发器，只有满足条件时，门会消失，才能够触发传送。
 }
