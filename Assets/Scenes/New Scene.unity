@@ -209,7 +209,24 @@ MonoBehaviour:
   roomLayer:
     serializedVersion: 2
     m_Bits: 64
+  maxStepCount: 0
   generatedRooms: []
+  wallType:
+    wallUp: {fileID: 8698751268374164157, guid: 9cccfa8749d4c5349bffe9b85c0c13b0, type: 3}
+    wallDown: {fileID: 8698751268374164157, guid: 2c35f5c52f353634ead556274633dcc2, type: 3}
+    wallLeft: {fileID: 8698751268374164157, guid: d23f5e31a4ef8544a9713763d0d87948, type: 3}
+    wallRight: {fileID: 8698751268374164157, guid: 983f746aabbd38d43a4799666eb6336f, type: 3}
+    wallUpDown: {fileID: 8698751268374164157, guid: ebfb126663981f840a6a863880f847d4, type: 3}
+    wallLeftRight: {fileID: 8698751268374164157, guid: 52e97e241c83e364a8ede43dd1c58c44, type: 3}
+    wallUpLeft: {fileID: 8698751268374164157, guid: 4e4157b0b89db1542983de2e4fadb195, type: 3}
+    wallUpRight: {fileID: 8698751268374164157, guid: 8017373c9b9b03e4f8986b088a6c2d61, type: 3}
+    wallDownLeft: {fileID: 8698751268374164157, guid: 52e97e241c83e364a8ede43dd1c58c44, type: 3}
+    wallDownRight: {fileID: 8698751268374164157, guid: a0346d9c26d25aa4fa70dfb91dd8bdee, type: 3}
+    wallUpLeftRight: {fileID: 8698751268374164157, guid: dc1261937eaf40049ade175165deb71d, type: 3}
+    wallDownLeftRight: {fileID: 8698751268374164157, guid: 0ebb35e1352158a4a9c6138c078dc9b9, type: 3}
+    wallLeftUpDown: {fileID: 8698751268374164157, guid: 1cd74df3fed51814faeac095c2a60a97, type: 3}
+    wallRightUpDown: {fileID: 8698751268374164157, guid: 7077aef0243ef8649b323e817624b61c, type: 3}
+    wallAll: {fileID: 8698751268374164157, guid: feb392e0a9d2ba34daed282eade543b5, type: 3}
 --- !u!1 &1729257715
 GameObject:
   m_ObjectHideFlags: 0

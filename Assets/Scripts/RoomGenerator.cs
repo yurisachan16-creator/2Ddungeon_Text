@@ -3,6 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+[System.Serializable]
+public class WallType
+{
+    //墙体预制体,根据不同的门的组合生成不同的墙体
+    public GameObject wallUp, wallDown, wallLeft, wallRight, wallUpDown, wallLeftRight,
+        wallUpLeft, wallUpRight, wallDownLeft, wallDownRight,
+        wallUpLeftRight, wallDownLeftRight, wallLeftUpDown, wallRightUpDown,
+        wallAll;
+
+}
+
 public class RoomGenerator : MonoBehaviour
 {
     public enum Direction { Up, Down, Left, Right };
@@ -25,6 +36,7 @@ public class RoomGenerator : MonoBehaviour
     List<GameObject> farRooms = new List<GameObject>();//存放最远房间列表
     List<GameObject> lessfarRooms = new List<GameObject>();//存放次远房间列表
     List<GameObject> oneWayRooms = new List<GameObject>();//存放单向房间列表
+    public WallType wallType; //墙体类型
 
     void Start()
     {
@@ -55,7 +67,7 @@ public class RoomGenerator : MonoBehaviour
         FindEndRoom();
         //改变结束房间颜色
         endRoom.GetComponent<SpriteRenderer>().color = endColor;
-        
+
     }
 
     void Update()
@@ -67,9 +79,9 @@ public class RoomGenerator : MonoBehaviour
         }
     }
 
-/// <summary>
-/// 改变生成点位置
-/// </summary>
+    /// <summary>
+    /// 改变生成点位置
+    /// </summary>
     public void ChangePointPos()
     {
         do
@@ -94,11 +106,11 @@ public class RoomGenerator : MonoBehaviour
 
     }
 
-/// <summary>
-/// 设置房间
-/// </summary>
-/// <param name="newRoom"></param>
-/// <param name="roomPosition"></param>
+    /// <summary>
+    /// 设置房间
+    /// </summary>
+    /// <param name="newRoom"></param>
+    /// <param name="roomPosition"></param>
     public void SetupRoom(Room newRoom, Vector3 roomPosition)
     {
         newRoom.roomUp = Physics2D.OverlapCircle(roomPosition + new Vector3(0, yOffset, 0), 0.2f, roomLayer);
@@ -107,11 +119,82 @@ public class RoomGenerator : MonoBehaviour
         newRoom.roomRight = Physics2D.OverlapCircle(roomPosition + new Vector3(xOffset, 0, 0), 0.2f, roomLayer);
 
         newRoom.UpdateRoom();
+
+        //根据门的数量和位置生成对应的墙体
+        switch (newRoom.doorNumber)
+        {
+            case 1:
+                if (newRoom.roomUp && !newRoom.roomDown && !newRoom.roomLeft && !newRoom.roomRight)
+                {
+                    Instantiate(wallType.wallUp, roomPosition, Quaternion.identity);
+                }
+                else if (!newRoom.roomUp && newRoom.roomDown && !newRoom.roomLeft && !newRoom.roomRight)
+                {
+                    Instantiate(wallType.wallDown, roomPosition, Quaternion.identity);
+                }
+                else if (!newRoom.roomUp && !newRoom.roomDown && newRoom.roomLeft && !newRoom.roomRight)
+                {
+                    Instantiate(wallType.wallLeft, roomPosition, Quaternion.identity);
+                }
+                else if (!newRoom.roomUp && !newRoom.roomDown && !newRoom.roomLeft && newRoom.roomRight)
+                {
+                    Instantiate(wallType.wallRight, roomPosition, Quaternion.identity);
+                }
+                break;
+            case 2:
+                if (newRoom.roomUp && newRoom.roomDown && !newRoom.roomLeft && !newRoom.roomRight)
+                {
+                    Instantiate(wallType.wallUpDown, roomPosition, Quaternion.identity);
+                }
+                else if (!newRoom.roomUp && !newRoom.roomDown && newRoom.roomLeft && newRoom.roomRight)
+                {
+                    Instantiate(wallType.wallLeftRight, roomPosition, Quaternion.identity);
+                }
+                else if (newRoom.roomUp && !newRoom.roomDown && newRoom.roomLeft && !newRoom.roomRight)
+                {
+                    Instantiate(wallType.wallUpLeft, roomPosition, Quaternion.identity);
+                }
+                else if (newRoom.roomUp && !newRoom.roomDown && !newRoom.roomLeft && newRoom.roomRight)
+                {
+                    Instantiate(wallType.wallUpRight, roomPosition, Quaternion.identity);
+                }
+                else if (!newRoom.roomUp && newRoom.roomDown && newRoom.roomLeft && !newRoom.roomRight)
+                {
+                    Instantiate(wallType.wallDownLeft, roomPosition, Quaternion.identity);
+                }
+                else if (!newRoom.roomUp && newRoom.roomDown && !newRoom.roomLeft && newRoom.roomRight)
+                {
+                    Instantiate(wallType.wallDownRight, roomPosition, Quaternion.identity);
+                }
+                break;
+            case 3:
+                if (newRoom.roomUp && newRoom.roomDown && newRoom.roomLeft && !newRoom.roomRight)
+                {
+                    Instantiate(wallType.wallLeftUpDown, roomPosition, Quaternion.identity);
+                }
+                else if (newRoom.roomUp && newRoom.roomDown && !newRoom.roomLeft && newRoom.roomRight)
+                {
+                    Instantiate(wallType.wallRightUpDown, roomPosition, Quaternion.identity);
+                }
+                else if (newRoom.roomUp && !newRoom.roomDown && newRoom.roomLeft && newRoom.roomRight)
+                {
+                    Instantiate(wallType.wallUpLeftRight, roomPosition, Quaternion.identity);
+                }
+                else if (!newRoom.roomUp && newRoom.roomDown && newRoom.roomLeft && newRoom.roomRight)
+                {
+                    Instantiate(wallType.wallDownLeftRight, roomPosition, Quaternion.identity);
+                }
+                break;
+            case 4:
+                Instantiate(wallType.wallAll, roomPosition, Quaternion.identity);
+                break;
+                
+        }
     }
 
-/// <summary>
-/// 查找结束房间
-/// </summary>
+    /// <summary>
+    /// 查找结束房间
+    /// </summary>
     public void FindEndRoom()
     {
         //找到最大步数
@@ -153,7 +236,7 @@ public class RoomGenerator : MonoBehaviour
                 oneWayRooms.Add(lessfarRooms[i]);
             }
         }
-        
+
         //选择最终房间
         if (oneWayRooms.Count != 0)
         {
