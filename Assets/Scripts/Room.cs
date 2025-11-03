@@ -12,10 +12,41 @@ public class Room : MonoBehaviour
     public int doorNumber;// 房间门的数量
     void Start()
     {
-        doorLeft.SetActive(roomLeft);
-        doorRight.SetActive(roomRight);
-        doorUp.SetActive(roomUp);
-        doorDown.SetActive(roomDown);
+        // 激活/隐藏门，并确保门不会阻挡玩家
+        SetupDoor(doorLeft, roomLeft);
+        SetupDoor(doorRight, roomRight);
+        SetupDoor(doorUp, roomUp);
+        SetupDoor(doorDown, roomDown);
+    }
+    
+    /// <summary>
+    /// 设置门的状态，确保门不会阻挡玩家通行
+    /// </summary>
+    /// <param name="door">门对象</param>
+    /// <param name="shouldBeActive">是否应该激活</param>
+    private void SetupDoor(GameObject door, bool shouldBeActive)
+    {
+        if (door == null) return;
+        
+        door.SetActive(shouldBeActive);
+        
+        if (shouldBeActive)
+        {
+            // 如果门被激活（有相邻房间），确保碰撞器设置为触发器或禁用
+            Collider2D doorCollider = door.GetComponent<Collider2D>();
+            if (doorCollider != null)
+            {
+                // 将碰撞器设置为触发器，这样玩家可以穿过
+                doorCollider.isTrigger = true;
+            }
+            
+            // 也检查子对象的碰撞器
+            Collider2D[] childColliders = door.GetComponentsInChildren<Collider2D>();
+            foreach (Collider2D collider in childColliders)
+            {
+                collider.isTrigger = true;
+            }
+        }
     }
 
     public void UpdateRoom(float xOffset, float yOffset)
