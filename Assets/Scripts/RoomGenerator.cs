@@ -43,18 +43,15 @@ public class RoomGenerator : MonoBehaviour
         for (int i = 0; i < roomNumber; i++)
         {
             generatedRooms.Add(Instantiate(roomPrefab, generatorPoint.position, Quaternion.identity).GetComponent<Room>());
-
-            //改变Point位置
             ChangePointPos();
-
         }
 
-        //给房间添加颜色
+        // 给房间添加颜色
         generatedRooms[0].GetComponent<SpriteRenderer>().color = startColor;
 
-        //找到最远的房间作为结束房间
+        // 找到最远的房间作为结束房间
         endRoom = generatedRooms[0].gameObject;
-        //遍历房间列表，找到距离生成点最远的房间
+        // 遍历房间列表，找到距离生成点最远的房间
         foreach (var room in generatedRooms)
         {
             // if (room.transform.position.sqrMagnitude > endRoom.transform.position.sqrMagnitude)
@@ -65,18 +62,17 @@ public class RoomGenerator : MonoBehaviour
             SetupRoom(room, room.transform.position);
         }
         FindEndRoom();
-        //改变结束房间颜色
+        // 改变结束房间颜色
         endRoom.GetComponent<SpriteRenderer>().color = endColor;
-
     }
 
     void Update()
     {
-        // //按下任意键获取当前房间名字并重新激活
-        // if (Input.anyKeyDown)
-        // {
-        //     SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        // }
+        //按下R键获取当前房间名字并重新激活
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
     }
 
     /// <summary>
@@ -190,6 +186,7 @@ public class RoomGenerator : MonoBehaviour
                 break;
 
         }
+        //Debug.Log($"Room at {roomPosition}: Up={newRoom.roomUp}, Down={newRoom.roomDown}, Left={newRoom.roomLeft}, Right={newRoom.roomRight}, DoorNum={newRoom.doorNumber}");
     }
 
     /// <summary>

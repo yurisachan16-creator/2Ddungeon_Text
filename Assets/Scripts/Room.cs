@@ -56,6 +56,9 @@ public class Room : MonoBehaviour
                     (int)(Mathf.Abs(transform.position.y) / yOffset);
         textStep.text = stepToStart.ToString();
 
+        // 重置doorNumber，避免重复累加导致的错误墙体生成
+        doorNumber = 0;
+        
         if (roomUp)
         {
             doorNumber++;
