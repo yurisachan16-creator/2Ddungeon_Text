@@ -4,10 +4,19 @@
 基于 Unity 2022.3.62f2c1 开发的 2D 地牢程序化生成原型项目，使用随机游走算法生成房间布局。
 
 ## 核心特性
+
+### 地牢生成系统
 - 🎲 **随机游走算法**：使用上下左右随机移动生成房间
 - 🎨 **颜色标记系统**：自动标记起始房间（绿色）和终点房间（红色）
 - 🔄 **热重载测试**：运行时按任意键即可重新生成地牢布局
 - 🚫 **重叠检测**：基于 `Physics2D.OverlapCircle` 防止房间重叠
+
+### ⭐ 角色状态机系统（新增）
+- 🎮 **通用FSM框架**：适配近战、远程等不同角色类型
+- 🗡️ **Knight角色**：完整的玩家控制（移动、双攻击、受伤、死亡）
+- 🏹 **远程敌人示例**：AI自动检测和攻击
+- 📚 **完整文档**：包含快速指南和详细技术文档
+- 🔧 **易于扩展**：3步骤创建新角色类型
 
 ## 技术栈
 - **引擎版本**：Unity 2022.3.62f2c1
@@ -25,13 +34,41 @@ Assets/
 │   ├── SampleScene.unity         # 主场景
 │   └── New Scene.unity           # 测试场景
 ├── Scripts/
-│   └── RoomGenerator.cs          # 房间生成核心逻辑
+│   ├── StateMachine/             # ⭐ 状态机核心框架
+│   │   ├── IState.cs            # 状态接口
+│   │   └── StateMachine.cs      # 状态机管理类
+│   ├── Character/                # ⭐ 角色系统
+│   │   ├── CharacterBase.cs     # 角色基类
+│   │   ├── Knight/              # Knight角色（近战玩家）
+│   │   │   ├── KnightController.cs
+│   │   │   ├── KnightIdleState.cs
+│   │   │   ├── KnightMoveState.cs
+│   │   │   ├── KnightAttack01State.cs
+│   │   │   ├── KnightAttack02State.cs
+│   │   │   ├── KnightHurtState.cs
+│   │   │   └── KnightDeathState.cs
+│   │   └── RangedEnemy/         # 远程敌人（AI示例）
+│   │       ├── RangedEnemyController.cs
+│   │       ├── RangedEnemyIdleState.cs
+│   │       ├── RangedEnemyAttackState.cs
+│   │       ├── RangedEnemyHurtState.cs
+│   │       └── RangedEnemyDeathState.cs
+│   ├── RoomGenerator.cs          # 房间生成核心逻辑
+│   ├── Room.cs                   # 房间脚本
+│   ├── PlayerController.cs       # 原始玩家控制器
+│   └── CameraController.cs       # 摄像机控制器
+├── Document/                      # ⭐ 项目文档
+│   ├── CharacterStateMachine.md  # 状态机完整技术文档
+│   ├── 角色状态机快速指南.md      # 快速开始指南
+│   └── 文件组织结构.md            # 文件结构说明
 └── Tiles/                        # Tilemap 资源（未使用）
     ├── Palettes/                 # 调色板
     └── Tiles/                    # Tile 资源
         ├── Floor/                # 地板 Tiles
         └── Wall/                 # 墙壁 Tiles
 ```
+
+⭐ **新增**：完整的角色状态机系统！查看 `Assets/Document/` 了解详情。
 
 ## 快速开始
 
@@ -95,9 +132,26 @@ git clone https://github.com/yurisachan16-creator/2Ddungeon_Text.git
 - 无命名空间定义（适合小型原型项目）
 - 单一脚本设计，未拆分生成器和房间管理
 
+## 快速开始 - 角色系统
+
+### 使用Knight角色（5分钟）
+1. 创建空GameObject，命名为"Knight"，Tag设置为"Player"
+2. 添加组件：
+   - `KnightController`（脚本）
+   - `Rigidbody2D`（Gravity Scale: 0）
+   - `Animator`
+   - `Sprite Renderer`
+   - `Box Collider 2D`
+3. 在Knight下创建子对象"AttackPoint"，移至武器位置
+4. 配置KnightController参数并运行
+5. 控制：WASD移动，左键/右键攻击
+
+**详细教程**：查看 `Assets/Document/角色状态机快速指南.md`
+
 ## 扩展建议
 
-### 添加回溯机制
+### 地牢生成系统
+#### 添加回溯机制
 ```csharp
 public void ChangePointPos()
 {
@@ -117,11 +171,17 @@ public void ChangePointPos()
 }
 ```
 
-### 添加房间连接
+#### 添加房间连接
 考虑使用：
 - Tilemap 系统生成走廊
 - Line Renderer 绘制路径
 - NavMesh 生成导航网格
+
+### 角色系统
+- 📖 参考 `Assets/Document/CharacterStateMachine.md` 创建新角色
+- 🎨 添加更多状态（跳跃、冲刺、格挡等）
+- 🤖 实现更复杂的敌人AI
+- 💥 添加技能系统和连招
 
 ## AI 开发指南
 本项目包含 `.github/copilot-instructions.md`，为 AI 编程助手提供：
