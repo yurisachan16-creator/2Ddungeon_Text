@@ -120,137 +120,75 @@ public class RoomGenerator : MonoBehaviour
 
         newRoom.UpdateRoom(xOffset, yOffset);
 
-        GameObject generatedWall = null; // 存储生成的墙壁对象
-        
         //根据门的数量和位置生成对应的墙体
         switch (newRoom.doorNumber)
         {
             case 1:
                 if (newRoom.roomUp && !newRoom.roomDown && !newRoom.roomLeft && !newRoom.roomRight)
                 {
-                    generatedWall = Instantiate(wallType.wallUp, roomPosition, Quaternion.identity);
+                    Instantiate(wallType.wallUp, roomPosition, Quaternion.identity);
                 }
                 else if (!newRoom.roomUp && newRoom.roomDown && !newRoom.roomLeft && !newRoom.roomRight)
                 {
-                    generatedWall = Instantiate(wallType.wallDown, roomPosition, Quaternion.identity);
+                    Instantiate(wallType.wallDown, roomPosition, Quaternion.identity);
                 }
                 else if (!newRoom.roomUp && !newRoom.roomDown && newRoom.roomLeft && !newRoom.roomRight)
                 {
-                    generatedWall = Instantiate(wallType.wallLeft, roomPosition, Quaternion.identity);
+                    Instantiate(wallType.wallLeft, roomPosition, Quaternion.identity);
                 }
                 else if (!newRoom.roomUp && !newRoom.roomDown && !newRoom.roomLeft && newRoom.roomRight)
                 {
-                    generatedWall = Instantiate(wallType.wallRight, roomPosition, Quaternion.identity);
+                    Instantiate(wallType.wallRight, roomPosition, Quaternion.identity);
                 }
                 break;
             case 2:
                 if (newRoom.roomUp && newRoom.roomDown && !newRoom.roomLeft && !newRoom.roomRight)
                 {
-                    generatedWall = Instantiate(wallType.wallUpDown, roomPosition, Quaternion.identity);
+                    Instantiate(wallType.wallUpDown, roomPosition, Quaternion.identity);
                 }
                 else if (!newRoom.roomUp && !newRoom.roomDown && newRoom.roomLeft && newRoom.roomRight)
                 {
-                    generatedWall = Instantiate(wallType.wallLeftRight, roomPosition, Quaternion.identity);
+                    Instantiate(wallType.wallLeftRight, roomPosition, Quaternion.identity);
                 }
                 else if (newRoom.roomUp && !newRoom.roomDown && newRoom.roomLeft && !newRoom.roomRight)
                 {
-                    generatedWall = Instantiate(wallType.wallUpLeft, roomPosition, Quaternion.identity);
+                    Instantiate(wallType.wallUpLeft, roomPosition, Quaternion.identity);
                 }
                 else if (newRoom.roomUp && !newRoom.roomDown && !newRoom.roomLeft && newRoom.roomRight)
                 {
-                    generatedWall = Instantiate(wallType.wallUpRight, roomPosition, Quaternion.identity);
+                    Instantiate(wallType.wallUpRight, roomPosition, Quaternion.identity);
                 }
                 else if (!newRoom.roomUp && newRoom.roomDown && newRoom.roomLeft && !newRoom.roomRight)
                 {
-                    generatedWall = Instantiate(wallType.wallDownLeft, roomPosition, Quaternion.identity);
+                    Instantiate(wallType.wallDownLeft, roomPosition, Quaternion.identity);
                 }
                 else if (!newRoom.roomUp && newRoom.roomDown && !newRoom.roomLeft && newRoom.roomRight)
                 {
-                    generatedWall = Instantiate(wallType.wallDownRight, roomPosition, Quaternion.identity);
+                    Instantiate(wallType.wallDownRight, roomPosition, Quaternion.identity);
                 }
                 break;
             case 3:
                 if (newRoom.roomUp && newRoom.roomDown && newRoom.roomLeft && !newRoom.roomRight)
                 {
-                    generatedWall = Instantiate(wallType.wallLeftUpDown, roomPosition, Quaternion.identity);
+                    Instantiate(wallType.wallLeftUpDown, roomPosition, Quaternion.identity);
                 }
                 else if (newRoom.roomUp && newRoom.roomDown && !newRoom.roomLeft && newRoom.roomRight)
                 {
-                    generatedWall = Instantiate(wallType.wallRightUpDown, roomPosition, Quaternion.identity);
+                    Instantiate(wallType.wallRightUpDown, roomPosition, Quaternion.identity);
                 }
                 else if (newRoom.roomUp && !newRoom.roomDown && newRoom.roomLeft && newRoom.roomRight)
                 {
-                    generatedWall = Instantiate(wallType.wallUpLeftRight, roomPosition, Quaternion.identity);
+                    Instantiate(wallType.wallUpLeftRight, roomPosition, Quaternion.identity);
                 }
                 else if (!newRoom.roomUp && newRoom.roomDown && newRoom.roomLeft && newRoom.roomRight)
                 {
-                    generatedWall = Instantiate(wallType.wallDownLeftRight, roomPosition, Quaternion.identity);
+                    Instantiate(wallType.wallDownLeftRight, roomPosition, Quaternion.identity);
                 }
                 break;
             case 4:
-                generatedWall = Instantiate(wallType.wallAll, roomPosition, Quaternion.identity);
+                Instantiate(wallType.wallAll, roomPosition, Quaternion.identity);
                 break;
 
-        }
-        
-        // 处理生成的墙壁，禁用门位置的碰撞器
-        if (generatedWall != null)
-        {
-            DisableDoorColliders(generatedWall, newRoom);
-        }
-    }
-    
-    /// <summary>
-    /// 禁用墙壁上门位置的碰撞器，确保玩家可以通过
-    /// </summary>
-    /// <param name="wall">墙壁对象</param>
-    /// <param name="room">房间信息</param>
-    private void DisableDoorColliders(GameObject wall, Room room)
-    {
-        // 获取墙壁及其所有子对象的碰撞器
-        Collider2D[] colliders = wall.GetComponentsInChildren<Collider2D>();
-        
-        foreach (Collider2D collider in colliders)
-        {
-            // 跳过已经是触发器的碰撞器
-            if (collider.isTrigger) continue;
-            
-            // 检查碰撞器是否在门的位置
-            bool isAtDoor = false;
-            
-            // 获取碰撞器相对于墙壁的位置
-            Vector3 localPos = wall.transform.InverseTransformPoint(collider.transform.position);
-            
-            // 根据房间配置检查是否在门的位置（需要根据实际墙壁预制体结构调整）
-            // 这里假设门的位置在墙壁的边缘中心位置
-            float threshold = 1.5f; // 门区域的容差值
-            
-            // 检查上门
-            if (room.roomUp && Mathf.Abs(localPos.y - 4.5f) < threshold && Mathf.Abs(localPos.x) < threshold)
-            {
-                isAtDoor = true;
-            }
-            // 检查下门
-            if (room.roomDown && Mathf.Abs(localPos.y + 4.5f) < threshold && Mathf.Abs(localPos.x) < threshold)
-            {
-                isAtDoor = true;
-            }
-            // 检查左门
-            if (room.roomLeft && Mathf.Abs(localPos.x + 8f) < threshold && Mathf.Abs(localPos.y) < threshold)
-            {
-                isAtDoor = true;
-            }
-            // 检查右门
-            if (room.roomRight && Mathf.Abs(localPos.x - 8f) < threshold && Mathf.Abs(localPos.y) < threshold)
-            {
-                isAtDoor = true;
-            }
-            
-            // 如果在门的位置，禁用碰撞器或设置为触发器
-            if (isAtDoor)
-            {
-                collider.isTrigger = true; // 设置为触发器而不是完全禁用，以便保留其他功能
-            }
         }
     }
 

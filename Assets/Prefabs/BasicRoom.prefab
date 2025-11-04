@@ -183,7 +183,7 @@ GameObject:
   - component: {fileID: 6479877930156979905}
   - component: {fileID: 8025029774548937327}
   m_Layer: 0
-  m_Name: Tilemap
+  m_Name: FloorsTilemap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2162,7 +2162,7 @@ TilemapCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 880628632028463393}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -2254,31 +2254,9 @@ CompositeCollider2D:
   m_GeometryType: 0
   m_GenerationType: 0
   m_EdgeRadius: 0
-  m_ColliderPaths:
-  - m_Collider: {fileID: 5544328730503591372}
-    m_ColliderPaths:
-    - - X: 90000096
-        Y: -50000044
-      - X: 90000096
-        Y: 50000044
-      - X: 90000040
-        Y: 50000100
-      - X: -90000040
-        Y: 50000100
-      - X: -90000096
-        Y: 50000044
-      - X: -90000096
-        Y: -50000044
-      - X: -90000040
-        Y: -50000100
-      - X: 90000040
-        Y: -50000100
+  m_ColliderPaths: []
   m_CompositePaths:
-    m_Paths:
-    - - {x: 8.999974, y: -5.00001}
-      - {x: 8.999974, y: 5.00001}
-      - {x: -9.00001, y: 4.999975}
-      - {x: -8.999974, y: -5.00001}
+    m_Paths: []
   m_VertexDistance: 0.0005
   m_OffsetDistance: 0.00005
   m_UseDelaunayMesh: 0
