@@ -20,7 +20,6 @@ public class KnightAttack02State : IState
     public void OnEnter()
     {
         // 播放攻击2动画
-        animator.SetBool("IsAttacking", true);
         animator.SetTrigger("Attack02");
         attackTimer = 0f;
         
@@ -61,8 +60,6 @@ public class KnightAttack02State : IState
     public void OnExit()
     {
         // 重置攻击标志
-        animator.SetBool("IsAttacking", false);
-        
         var characterBase = character as CharacterBase;
         if (characterBase != null)
         {

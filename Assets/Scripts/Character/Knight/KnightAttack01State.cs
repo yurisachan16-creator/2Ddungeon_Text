@@ -20,7 +20,6 @@ public class KnightAttack01State : IState
     public void OnEnter()
     {
         // 播放攻击1动画
-        animator.SetBool("IsAttacking", true);
         animator.SetTrigger("Attack01");
         attackTimer = 0f;
         
@@ -28,7 +27,7 @@ public class KnightAttack01State : IState
         var characterBase = character as CharacterBase;
         if (characterBase != null)
         {
-            // 使用反射设置私有字段（或者在CharacterBase中添加公共方法）
+            // 使用反射设置私有字段
             var field = typeof(CharacterBase).GetField("isAttacking", 
                 System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
             field?.SetValue(characterBase, true);
@@ -62,8 +61,6 @@ public class KnightAttack01State : IState
     public void OnExit()
     {
         // 重置攻击标志
-        animator.SetBool("IsAttacking", false);
-        
         var characterBase = character as CharacterBase;
         if (characterBase != null)
         {

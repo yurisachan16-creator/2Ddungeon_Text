@@ -19,7 +19,6 @@ public class KnightIdleState : IState
     {
         // 播放空闲动画
         animator.SetFloat("Speed", 0f);
-        animator.SetBool("IsAttacking", false);
     }
     
     public void OnUpdate()

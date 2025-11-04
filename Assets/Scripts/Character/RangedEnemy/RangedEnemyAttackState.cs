@@ -94,10 +94,7 @@ public class RangedEnemyAttackState : IState
     
     public void OnExit()
     {
-        if (animator != null)
-        {
-            animator.SetBool("IsAttacking", false);
-        }
+        // 退出攻击状态
     }
     
     /// <summary>

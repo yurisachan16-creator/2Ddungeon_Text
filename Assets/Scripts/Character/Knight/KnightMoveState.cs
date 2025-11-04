@@ -20,8 +20,7 @@ public class KnightMoveState : IState
     
     public void OnEnter()
     {
-        // 进入移动状态
-        animator.SetBool("IsAttacking", false);
+        // 进入移动状态（无需特殊初始化）
     }
     
     public void OnUpdate()

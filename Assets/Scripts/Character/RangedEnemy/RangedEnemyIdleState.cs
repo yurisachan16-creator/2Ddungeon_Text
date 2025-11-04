@@ -24,7 +24,6 @@ public class RangedEnemyIdleState : IState
         if (animator != null)
         {
             animator.SetFloat("Speed", 0f);
-            animator.SetBool("IsAttacking", false);
         }
         
         // 查找玩家
