@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffe7d157e1446884b8c80de076a806fb, type: 3}
+  m_Name: T1_Wall_Decorations
+  m_EditorClassIdentifier: 
+  items:
+  - prefab: {fileID: 5612155264484053742, guid: b98fcbeb7c9565d4d801a3ddb4ed2f37, type: 3}
+    baseWeight: 60
+    rarity: 0
+    preventDuplicatesInRoom: 0
+    depthWeightModifier:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 0
+      m_PostInfinity: 0
+      m_RotationOrder: 0
+    minRoomDepth: 0
+    maxRoomDepth: 0
+  - prefab: {fileID: 7003988276414080117, guid: 13f950893f00aba469b5c3422af0440b, type: 3}
+    baseWeight: 40
+    rarity: 0
+    preventDuplicatesInRoom: 0
+    depthWeightModifier:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 0
+      m_PostInfinity: 0
+      m_RotationOrder: 0
+    minRoomDepth: 0
+    maxRoomDepth: 0
+  showDebugInfo: 0

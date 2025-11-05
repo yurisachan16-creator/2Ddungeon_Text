@@ -1,0 +1,52 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffe7d157e1446884b8c80de076a806fb, type: 3}
+  m_Name: T1_Floor_Props
+  m_EditorClassIdentifier: 
+  items:
+  - prefab: {fileID: 6507486449021633966, guid: b56a9c70bf96e03499ce8f1ceb98ae8c, type: 3}
+    baseWeight: 50
+    rarity: 0
+    preventDuplicatesInRoom: 0
+    depthWeightModifier:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 0
+      m_PostInfinity: 0
+      m_RotationOrder: 0
+    minRoomDepth: 0
+    maxRoomDepth: 0
+  - prefab: {fileID: 9134595641586727819, guid: a9f3da716067eb143811db21e2f89692, type: 3}
+    baseWeight: 10
+    rarity: 2
+    preventDuplicatesInRoom: 0
+    depthWeightModifier:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 0
+      m_PostInfinity: 0
+      m_RotationOrder: 0
+    minRoomDepth: 3
+    maxRoomDepth: 0
+  - prefab: {fileID: 662551707077597503, guid: a43eeaa3e573fb449a43efe8b0a37f8b, type: 3}
+    baseWeight: 30
+    rarity: 0
+    preventDuplicatesInRoom: 0
+    depthWeightModifier:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 0
+      m_PostInfinity: 0
+      m_RotationOrder: 0
+    minRoomDepth: 0
+    maxRoomDepth: 0
+  showDebugInfo: 0

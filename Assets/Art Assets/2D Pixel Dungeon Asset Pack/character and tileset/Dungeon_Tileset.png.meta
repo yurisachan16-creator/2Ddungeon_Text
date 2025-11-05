@@ -249,7 +249,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Dungeon_Tileset_6
+      name: Floor_01
       rect:
         serializedVersion: 2
         x: 96
@@ -270,7 +270,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Dungeon_Tileset_7
+      name: Floor_02
       rect:
         serializedVersion: 2
         x: 112
@@ -291,7 +291,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Dungeon_Tileset_8
+      name: Floor_03
       rect:
         serializedVersion: 2
         x: 128
@@ -312,7 +312,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Dungeon_Tileset_9
+      name: Floor_04
       rect:
         serializedVersion: 2
         x: 144
@@ -459,7 +459,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Dungeon_Tileset_16
+      name: Floor_05
       rect:
         serializedVersion: 2
         x: 96
@@ -480,7 +480,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Dungeon_Tileset_17
+      name: Floor_06
       rect:
         serializedVersion: 2
         x: 112
@@ -501,7 +501,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Dungeon_Tileset_18
+      name: Floor_07
       rect:
         serializedVersion: 2
         x: 128
@@ -522,7 +522,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Dungeon_Tileset_19
+      name: Floor_08
       rect:
         serializedVersion: 2
         x: 144
@@ -669,7 +669,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Dungeon_Tileset_26
+      name: Floor_09
       rect:
         serializedVersion: 2
         x: 96
@@ -690,7 +690,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Dungeon_Tileset_27
+      name: Floor_10
       rect:
         serializedVersion: 2
         x: 112
@@ -711,7 +711,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Dungeon_Tileset_28
+      name: Floor_11
       rect:
         serializedVersion: 2
         x: 128
@@ -732,7 +732,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Dungeon_Tileset_29
+      name: Floor_12
       rect:
         serializedVersion: 2
         x: 144
@@ -942,7 +942,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Dungeon_Tileset_39
+      name: Ladder
       rect:
         serializedVersion: 2
         x: 144
@@ -1383,7 +1383,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Dungeon_Tileset_60
+      name: Textured_flooring_01
       rect:
         serializedVersion: 2
         x: 0
@@ -1404,7 +1404,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Dungeon_Tileset_61
+      name: Textured_flooring_02
       rect:
         serializedVersion: 2
         x: 16
@@ -1425,7 +1425,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Dungeon_Tileset_62
+      name: Textured_flooring_03
       rect:
         serializedVersion: 2
         x: 32
@@ -1446,7 +1446,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Dungeon_Tileset_63
+      name: Textured_flooring_04
       rect:
         serializedVersion: 2
         x: 48
@@ -1593,7 +1593,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Dungeon_Tileset_70
+      name: Textured_flooring_05
       rect:
         serializedVersion: 2
         x: 0
@@ -1614,7 +1614,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Dungeon_Tileset_71
+      name: Textured_flooring_06
       rect:
         serializedVersion: 2
         x: 16
@@ -1635,7 +1635,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Dungeon_Tileset_72
+      name: Textured_flooring_07
       rect:
         serializedVersion: 2
         x: 32
@@ -1656,7 +1656,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Dungeon_Tileset_73
+      name: Textured_flooring_08
       rect:
         serializedVersion: 2
         x: 48
@@ -1677,7 +1677,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Dungeon_Tileset_74
+      name: Flag
       rect:
         serializedVersion: 2
         x: 64
@@ -1866,7 +1866,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Dungeon_Tileset_83
+      name: Box
       rect:
         serializedVersion: 2
         x: 48
@@ -1887,7 +1887,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Dungeon_Tileset_84
+      name: Chest
       rect:
         serializedVersion: 2
         x: 64
@@ -1929,7 +1929,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Dungeon_Tileset_86
+      name: Icon
       rect:
         serializedVersion: 2
         x: 96
@@ -1971,7 +1971,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Dungeon_Tileset_88
+      name: Silver Key
       rect:
         serializedVersion: 2
         x: 128
@@ -1992,7 +1992,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Dungeon_Tileset_89
+      name: Health Potion
       rect:
         serializedVersion: 2
         x: 144
@@ -2013,7 +2013,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Dungeon_Tileset_90
+      name: Torch
       rect:
         serializedVersion: 2
         x: 0
@@ -2034,7 +2034,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Dungeon_Tileset_91
+      name: SideTorch
       rect:
         serializedVersion: 2
         x: 16
@@ -2055,7 +2055,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Dungeon_Tileset_92
+      name: Extinguished_Torch
       rect:
         serializedVersion: 2
         x: 32
@@ -2076,7 +2076,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Dungeon_Tileset_93
+      name: Candlestick
       rect:
         serializedVersion: 2
         x: 48
@@ -2160,7 +2160,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Dungeon_Tileset_97
+      name: Mana Potion
       rect:
         serializedVersion: 2
         x: 112
@@ -2202,7 +2202,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Dungeon_Tileset_99
+      name: Golden Key
       rect:
         serializedVersion: 2
         x: 144
@@ -2233,6 +2233,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
+      Box: -537337006
+      Candlestick: -1451048899
+      Chest: 76809590
       Door_L: 1335303813
       Door_R: 2103108143
       Dungeon_Tileset_0: 983731101
@@ -2243,10 +2246,6 @@ TextureImporter:
       Dungeon_Tileset_13: -254906981
       Dungeon_Tileset_14: -844535234
       Dungeon_Tileset_15: 1149561052
-      Dungeon_Tileset_16: -731724853
-      Dungeon_Tileset_17: -59709553
-      Dungeon_Tileset_18: 55765790
-      Dungeon_Tileset_19: 2065510200
       Dungeon_Tileset_2: 1933132994
       Dungeon_Tileset_20: 2023229801
       Dungeon_Tileset_21: -1394227556
@@ -2254,10 +2253,6 @@ TextureImporter:
       Dungeon_Tileset_23: 1852694554
       Dungeon_Tileset_24: -1046630805
       Dungeon_Tileset_25: -908154424
-      Dungeon_Tileset_26: 469810719
-      Dungeon_Tileset_27: -596353638
-      Dungeon_Tileset_28: -826918989
-      Dungeon_Tileset_29: 1617103067
       Dungeon_Tileset_3: 1735300461
       Dungeon_Tileset_30: 985898144
       Dungeon_Tileset_31: 998721951
@@ -2268,7 +2263,6 @@ TextureImporter:
       Dungeon_Tileset_36: -743149159
       Dungeon_Tileset_37: 1223154765
       Dungeon_Tileset_38: -811778392
-      Dungeon_Tileset_39: -383116528
       Dungeon_Tileset_4: -1358865928
       Dungeon_Tileset_40: -622121402
       Dungeon_Tileset_41: -374263259
@@ -2285,54 +2279,60 @@ TextureImporter:
       Dungeon_Tileset_54: 1276108511
       Dungeon_Tileset_55: -332873534
       Dungeon_Tileset_59: -120715973
-      Dungeon_Tileset_6: -310187078
-      Dungeon_Tileset_60: -273530404
-      Dungeon_Tileset_61: -1705871266
-      Dungeon_Tileset_62: -875598406
-      Dungeon_Tileset_63: 1117505397
       Dungeon_Tileset_64: -1866100399
       Dungeon_Tileset_65: 1832495975
       Dungeon_Tileset_68: 1754465266
       Dungeon_Tileset_69: -1885258219
-      Dungeon_Tileset_7: -972184222
-      Dungeon_Tileset_70: 64019362
-      Dungeon_Tileset_71: 373898139
-      Dungeon_Tileset_72: 182697534
-      Dungeon_Tileset_73: 227308161
-      Dungeon_Tileset_74: -187517805
       Dungeon_Tileset_75: -223325141
       Dungeon_Tileset_76: -176161039
       Dungeon_Tileset_77: 476531061
       Dungeon_Tileset_78: 2027745185
       Dungeon_Tileset_79: -621344822
-      Dungeon_Tileset_8: 288983908
       Dungeon_Tileset_80: -995110426
       Dungeon_Tileset_81: 360339778
       Dungeon_Tileset_82: -246983178
-      Dungeon_Tileset_83: -537337006
-      Dungeon_Tileset_84: 76809590
       Dungeon_Tileset_85: -478312974
-      Dungeon_Tileset_86: -1676384582
       Dungeon_Tileset_87: 267286282
-      Dungeon_Tileset_88: 1284961497
-      Dungeon_Tileset_89: -776793417
-      Dungeon_Tileset_9: 560297841
-      Dungeon_Tileset_90: 475073034
-      Dungeon_Tileset_91: -28210070
-      Dungeon_Tileset_92: 410572339
-      Dungeon_Tileset_93: -1451048899
       Dungeon_Tileset_94: -457279358
       Dungeon_Tileset_95: 1329100616
       Dungeon_Tileset_96: -714403846
-      Dungeon_Tileset_97: -110878203
       Dungeon_Tileset_98: 1536517061
-      Dungeon_Tileset_99: -1663891960
+      Extinguished_Torch: 410572339
+      Flag: -187517805
+      Floor_01: -310187078
+      Floor_02: -972184222
+      Floor_03: 288983908
+      Floor_04: 560297841
+      Floor_05: -731724853
+      Floor_06: -59709553
+      Floor_07: 55765790
+      Floor_08: 2065510200
+      Floor_09: 469810719
+      Floor_10: -596353638
+      Floor_11: -826918989
+      Floor_12: 1617103067
+      Golden Key: -1663891960
+      Health Potion: -776793417
+      Icon: -1676384582
+      Ladder: -383116528
+      Mana Potion: -110878203
       SideDoor_L1: 733096028
       SideDoor_L2: 1846408670
       SideDoor_Mid1: -1770603462
       SideDoor_Mid2: -592174612
       SideDoor_R1: 448000793
       SideDoor_R2: 92402493
+      SideTorch: -28210070
+      Silver Key: 1284961497
+      Textured_flooring_01: -273530404
+      Textured_flooring_02: -1705871266
+      Textured_flooring_03: -875598406
+      Textured_flooring_04: 1117505397
+      Textured_flooring_05: 64019362
+      Textured_flooring_06: 373898139
+      Textured_flooring_07: 182697534
+      Textured_flooring_08: 227308161
+      Torch: 475073034
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
