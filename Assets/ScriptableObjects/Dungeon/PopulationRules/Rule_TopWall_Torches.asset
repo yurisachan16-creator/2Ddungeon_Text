@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 747d144e1c0a456448d287bbeb8e92fb, type: 3}
+  m_Name: Rule_TopWall_Torches
+  m_EditorClassIdentifier: 
+  description: "\u89C4\u52191: \u5899\u58C1\u706B\u628A\uFF08\u6EE1\u8DB3\u9700\u6C421\uFF09"
+  isEnabled: 1
+  applyToStartRoom: 0
+  applyToBossRoom: 0
+  applyToNormalRooms: 1
+  targetWalls: 1
+  spawnTable: {fileID: 11400000, guid: 0181556d625a459439b885fc6efd8839, type: 2}
+  minAmount: 1
+  maxAmount: 3
+  minSpacing: 2

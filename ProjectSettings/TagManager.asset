@@ -14,7 +14,7 @@ TagManager:
   - Room
   - Door
   - Enemy
-  - 
+  - Player
   - 
   - 
   - 
@@ -52,6 +52,9 @@ TagManager:
     locked: 0
   - name: Prop
     uniqueID: 2494852545
+    locked: 0
+  - name: Effect
+    uniqueID: 930592119
     locked: 0
   - name: Player
     uniqueID: 3974622535

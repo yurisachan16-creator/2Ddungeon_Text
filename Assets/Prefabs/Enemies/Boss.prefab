@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 1807699542112339916}
   - component: {fileID: 3524247391683388586}
   - component: {fileID: 3545825720018746425}
-  m_Layer: 0
+  - component: {fileID: 1641296089774069700}
+  m_Layer: 8
   m_Name: Boss
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -30,7 +31,8 @@ Transform:
   m_LocalPosition: {x: 3.57, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 6854022520990454191}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &3524247391683388586
@@ -72,7 +74,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1419680013
-  m_SortingLayer: 6
+  m_SortingLayer: 7
   m_SortingOrder: 0
   m_Sprite: {fileID: -2061939027, guid: 33301de830aad8b43a9576034169134b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -106,3 +108,72 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1641296089774069700
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 570668710890407382}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7930b9aecd173ea43bf119e637cb52e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterType: 3
+  characterName: Boss
+  maxHealth: 100
+  currentHealth: 0
+  moveSpeed: 5
+  attackDamage: 10
+  isDead: 0
+  isHurt: 0
+  isAttacking: 0
+  detectionRange: 8
+  meleeAttackRange: 2
+  rangedAttackRange: 6
+  flySpeed: 2
+  chaseSpeed: 3
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 512
+  attackPoint: {fileID: 6854022520990454191}
+  projectilePrefab: {fileID: 3647991544706512844, guid: 76dab7be368a5544db49b8b32bf4a450, type: 3}
+  rangedAttackCooldown: 3
+  meleeAttackCooldown: 2
+  summonCooldown: 10
+  chargeCooldown: 5
+  summonPrefab: {fileID: 2207194048927897812, guid: 9b3e217e239487c46b9444ca1191b479, type: 3}
+  maxSummonCount: 3
+  summonRadius: 3
+--- !u!1 &8535714903093502710
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6854022520990454191}
+  m_Layer: 8
+  m_Name: AttackPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6854022520990454191
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8535714903093502710}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1807699542112339916}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

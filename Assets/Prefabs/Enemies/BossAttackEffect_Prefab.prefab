@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &5701117607792498028
+--- !u!1 &3647991544706512844
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,39 +8,39 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4969158422779795728}
-  - component: {fileID: 4814061026908458751}
-  - component: {fileID: 1191968687043806380}
-  - component: {fileID: 2138579891069568226}
-  m_Layer: 8
-  m_Name: Slime
+  - component: {fileID: 4981550479416616159}
+  - component: {fileID: 3781597833826458661}
+  - component: {fileID: 7297489286176544956}
+  - component: {fileID: 7864953124267387207}
+  m_Layer: 0
+  m_Name: BossAttackEffect_Prefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4969158422779795728
+--- !u!4 &4981550479416616159
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5701117607792498028}
+  m_GameObject: {fileID: 3647991544706512844}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.26, y: 0, z: 0}
+  m_LocalPosition: {x: 2.87, y: 0.082316354, z: -0.010947759}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &4814061026908458751
+--- !u!212 &3781597833826458661
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5701117607792498028}
+  m_GameObject: {fileID: 3647991544706512844}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -72,10 +72,10 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -1419680013
-  m_SortingLayer: 7
+  m_SortingLayerID: 930592119
+  m_SortingLayer: 5
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1037553891, guid: 8abf9b2b348db5b4a89c2f4402c20c77, type: 3}
+  m_Sprite: {fileID: -1225479096, guid: f007646b8d2e3334f950a115a1c3f195, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -86,17 +86,17 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!95 &1191968687043806380
+--- !u!95 &7297489286176544956
 Animator:
   serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5701117607792498028}
+  m_GameObject: {fileID: 3647991544706512844}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: acdba0269fbe7fd448f2bd443231c4ab, type: 2}
+  m_Controller: {fileID: 9100000, guid: e035a8129e56e5143a4d715198aa7588, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -107,34 +107,15 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &2138579891069568226
+--- !u!114 &7864953124267387207
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5701117607792498028}
+  m_GameObject: {fileID: 3647991544706512844}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0e81d28c9bc177743a3b8a45e7d6c057, type: 3}
+  m_Script: {fileID: 11500000, guid: e79cbb661792f2049a0998141a052a1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterType: 0
-  characterName: "\u89D2\u8272"
-  maxHealth: 100
-  currentHealth: 0
-  moveSpeed: 5
-  attackDamage: 10
-  isDead: 0
-  isHurt: 0
-  isAttacking: 0
-  detectionRange: 4
-  attackRange: 0.8
-  wanderSpeed: 0.8
-  chaseSpeed: 2
-  playerLayer:
-    serializedVersion: 2
-    m_Bits: 512
-  wanderWaitTime: 2
-  wanderRadius: 3
-  attackCooldown: 1.5

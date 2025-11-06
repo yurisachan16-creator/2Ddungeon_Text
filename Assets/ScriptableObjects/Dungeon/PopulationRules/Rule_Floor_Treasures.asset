@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 961c9471f7987284691de25daaa8b9f2, type: 3}
+  m_Name: Rule_Floor_Treasures
+  m_EditorClassIdentifier: 
+  description: "\u89C4\u52192: \u5730\u677F\u5B9D\u7BB1\uFF08\u6EE1\u8DB3\u9700\u6C423\uFF09"
+  isEnabled: 1
+  applyToStartRoom: 0
+  applyToBossRoom: 0
+  applyToNormalRooms: 1
+  spawnTable: {fileID: 11400000, guid: 7756f83e6726df948b3d66edbd19266f, type: 2}
+  minAmount: 1
+  maxAmount: 2
+  collisionCheckRadius: 0.5
+  maxRetries: 10

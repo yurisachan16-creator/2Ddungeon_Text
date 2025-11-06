@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffe7d157e1446884b8c80de076a806fb, type: 3}
+  m_Name: T1_Enemies
+  m_EditorClassIdentifier: 
+  items:
+  - prefab: {fileID: 5701117607792498028, guid: 80cb277b71b040b4c8332a0a674ddea5, type: 3}
+    baseWeight: 60
+    rarity: 0
+    preventDuplicatesInRoom: 0
+    depthWeightModifier:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 0
+      m_PostInfinity: 0
+      m_RotationOrder: 4
+    minRoomDepth: 2
+    maxRoomDepth: 0
+  - prefab: {fileID: 2207194048927897812, guid: 9b3e217e239487c46b9444ca1191b479, type: 3}
+    baseWeight: 40
+    rarity: 1
+    preventDuplicatesInRoom: 0
+    depthWeightModifier:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 0
+      m_PostInfinity: 0
+      m_RotationOrder: 0
+    minRoomDepth: 5
+    maxRoomDepth: 0
+  showDebugInfo: 0
