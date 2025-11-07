@@ -37,10 +37,6 @@ public class RoomGenerator : MonoBehaviour
     List<GameObject> lessfarRooms = new List<GameObject>();//存放次远房间列表
     List<GameObject> oneWayRooms = new List<GameObject>();//存放单向房间列表
     public WallType wallType; //墙体类型
-    
-    [Header("填充系统 (Population System)")]
-    [Tooltip("拖入场景中的 DungeonPopulationManager 对象")]
-    public DungeonPopulationManager populationManager;
 
     void Start()
     {
@@ -68,9 +64,6 @@ public class RoomGenerator : MonoBehaviour
         FindEndRoom();
         // 改变结束房间颜色
         endRoom.GetComponent<SpriteRenderer>().color = endColor;
-        
-        // === 新增：填充阶段 (Population Phase) ===
-        PopulateDungeon();
     }
 
     void Update()
@@ -80,37 +73,6 @@ public class RoomGenerator : MonoBehaviour
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
-    }
-    
-    /// <summary>
-    /// 填充地牢内容（道具、敌人、装饰等）
-    /// </summary>
-    private void PopulateDungeon()
-    {
-        if (populationManager == null)
-        {
-            Debug.LogWarning("RoomGenerator: 未设置 DungeonPopulationManager，跳过填充阶段");
-            return;
-        }
-        
-        if (generatedRooms.Count == 0 || endRoom == null)
-        {
-            Debug.LogError("RoomGenerator: 房间列表为空或结束房间未找到，无法填充！");
-            return;
-        }
-        
-        // 获取起始和结束房间
-        Room startRoom = generatedRooms[0]; // 第一个房间是起始房间
-        Room bossRoom = endRoom.GetComponent<Room>(); // 结束房间是Boss房间
-        
-        // 为Boss房间添加 BossRoomController 组件（如果还没有）
-        if (bossRoom != null && bossRoom.GetComponent<BossRoomController>() == null)
-        {
-            bossRoom.gameObject.AddComponent<BossRoomController>();
-        }
-        
-        // 调用填充管理器
-        populationManager.PopulateDungeon(generatedRooms, startRoom, bossRoom);
     }
 
     /// <summary>

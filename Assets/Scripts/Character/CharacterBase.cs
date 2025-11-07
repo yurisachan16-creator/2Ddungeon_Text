@@ -6,8 +6,8 @@ using UnityEngine;
 public enum CharacterType
 {
     Player,     // 玩家
-    Melee,      // 近战敌人
-    Ranged,     // 远程敌人
+    Enemy,      // 敌人
+    NPC,        // 非玩家角色
     Boss        // Boss
 }
 
