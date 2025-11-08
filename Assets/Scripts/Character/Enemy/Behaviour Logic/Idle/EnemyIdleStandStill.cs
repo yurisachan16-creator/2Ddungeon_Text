@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName ="Idle-Stand Still",menuName ="Enemy/Idle Behaviour Logic/Stand Still")]
+[CreateAssetMenu(fileName = "Idle-Stand Still", menuName = "Enemy Logic/Idle Logic/Stand Still")]
 public class EnemyIdleStandStill : EnemyIdleSOBase
 {
     public override void DoAnimationTriggerEventLogic(Enemy.AnimationTriggerType triggerType)

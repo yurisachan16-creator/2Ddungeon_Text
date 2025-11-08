@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName ="Chase-Run Away",menuName ="Enemy/Chase Logic/Run Away")]
+[CreateAssetMenu(fileName = "Chase-Run Away", menuName = "Enemy Logic/Chase Logic/Run Away")]
 public class EnemyChaseRunAway : EnemyChaseSOBase
 {
     [SerializeField] private float _runAwaySpeed = 1.5f;
@@ -24,6 +24,13 @@ public class EnemyChaseRunAway : EnemyChaseSOBase
     public override void DoFrameUpdateLogic()
     {
         base.DoFrameUpdateLogic();
+
+        // 添加空值检查
+        if (playerTransform == null || transform == null)
+        {
+            Debug.LogWarning("EnemyChaseRunAway: playerTransform 或 transform 为空！");
+            return;
+        }
 
         Vector2 runDir = -(playerTransform.position - transform.position).normalized;
         enemy.MoveEnemy(runDir * _runAwaySpeed);

@@ -34,17 +34,32 @@ public class EnemyAttackSingleStraightProjectile : EnemyAttackSOBase
     {
         base.DoFrameUpdateLogic();
 
+        // 添加空值检查
+        if (playerTransform == null)
+        {
+            Debug.LogWarning("EnemyAttackSingleStraightProjectile: playerTransform 为空！");
+            return;
+        }
+
         enemy.MoveEnemy(Vector2.zero);
 
         if (_timer > _timeBetweenShots)
         {
             _timer = 0f;
 
-            // 发射子弹
-            Vector2 direction = (playerTransform.position - enemy.transform.position).normalized;
-            Rigidbody2D bullet = GameObject.Instantiate(BulletPrefab, enemy.transform.position, Quaternion.identity);
-            bullet.velocity = direction * _bulletSpeed;
+            // 发射子弹前检查预制体
+            if (BulletPrefab != null)
+            {
+                Vector2 direction = (playerTransform.position - enemy.transform.position).normalized;
+                Rigidbody2D bullet = GameObject.Instantiate(BulletPrefab, enemy.transform.position, Quaternion.identity);
+                bullet.velocity = direction * _bulletSpeed;
+            }
+            else
+            {
+                Debug.LogWarning("EnemyAttackSingleStraightProjectile: BulletPrefab 未设置！");
+            }
         }
+        
         if (Vector2.Distance(playerTransform.position, enemy.transform.position) > _distanceToCountExit)
         {
             _exitTimer += Time.deltaTime;
@@ -55,7 +70,7 @@ public class EnemyAttackSingleStraightProjectile : EnemyAttackSOBase
         }
         else
         {
-            _timer += Time.deltaTime;
+            _exitTimer = 0f; // 修复：应该重置 exitTimer 而不是 timer
         }
         
         _timer += Time.deltaTime;
@@ -66,9 +81,22 @@ public class EnemyAttackSingleStraightProjectile : EnemyAttackSOBase
         base.DoPhysicsLogic();
     }
 
-    public override void Initialize(GameObject gameObject, Enemy enemy)
+    public virtual void Initialize(GameObject gameObject, Enemy enemy)
     {
-        base.Initialize(gameObject, enemy);
+        this.gameObject = gameObject;
+        this.transform = gameObject.transform;
+        this.enemy = enemy;
+        
+        // 修改：添加空值检查
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        if (player != null)
+        {
+            playerTransform = player.transform;
+        }
+        else
+        {
+            Debug.LogWarning("EnemyIdleSOBase: 未找到带有 'Player' 标签的对象。");
+        }
     }
 
     public override void ResetValues()

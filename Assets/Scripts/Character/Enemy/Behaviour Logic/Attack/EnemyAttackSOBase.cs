@@ -10,14 +10,22 @@ public class EnemyAttackSOBase : ScriptableObject
 
     protected Transform playerTransform;
 
-    public virtual void Initialize(GameObject gameObject,Enemy enemy)
+    public virtual void Initialize(GameObject gameObject, Enemy enemy)
     {
         this.gameObject = gameObject;
         this.transform = gameObject.transform;
         this.enemy = enemy;
         
-
-        playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
+        // 修改：添加空值检查
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        if (player != null)
+        {
+            playerTransform = player.transform;
+        }
+        else
+        {
+            Debug.LogWarning("EnemyChaseSOBase: 未找到带有 'Player' 标签的对象。");
+        }
     }
 
     public virtual void DoEnterLogic() { }
