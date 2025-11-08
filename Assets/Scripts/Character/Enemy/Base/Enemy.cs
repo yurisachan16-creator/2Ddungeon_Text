@@ -5,23 +5,40 @@ using UnityEngine;
 /// <summary>
 /// 敌人类
 /// </summary>
-public class Enemy : MonoBehaviour, IDamageable, IMoveable
+public class Enemy : MonoBehaviour, IDamageable, IMoveable, ITriggercheckable
 {
     [field: SerializeField] public float MaxHealth { get; set; } = 100f;
     [field: SerializeField] public float CurrentHealth { get; set; }
 
     public Rigidbody2D RB { get; set; }
     public bool IsFacingRight { get; set; } = true;
+    public bool IsAggroed { get; set; }
+    public bool IsWithinStrikingDistance { get; set; }
 
     #region Enemy State Machine Variables
     public EnemyStateMachine StateMachine { get; set; }
     public EnemyIdleState IdleState { get; set; }
     public EnemyChaseState ChaseState { get; set; }
     public EnemyAttackState AttackState { get; set; }
+
+    #endregion
+
+    #region ScriptableObjects Variables
+    [SerializeField] private EnemyIdleSOBase EnemyIdleBase;
+    [SerializeField] private EnemyChaseSOBase EnemyChaseBase;
+    [SerializeField] private EnemyAttackSOBase EnemyAttackBase;
+
+    public EnemyIdleSOBase EnemyIdleBaseInstance { get; private set; }
+    public EnemyChaseSOBase EnemyChaseBaseInstance { get; private set; }
+    public EnemyAttackSOBase EnemyAttackBaseInstance { get; private set; }
     #endregion
 
     void Awake()
     {
+        EnemyIdleBaseInstance = Instantiate(EnemyIdleBase);
+        EnemyChaseBaseInstance = Instantiate(EnemyChaseBase);
+        EnemyAttackBaseInstance = Instantiate(EnemyAttackBase);
+
         StateMachine = new EnemyStateMachine();
 
         IdleState = new EnemyIdleState(this, StateMachine);
@@ -36,6 +53,10 @@ public class Enemy : MonoBehaviour, IDamageable, IMoveable
 
         RB = GetComponent<Rigidbody2D>();
 
+        EnemyIdleBaseInstance.Initialize(gameObject, this);
+        EnemyChaseBaseInstance.Initialize(gameObject, this);
+        EnemyAttackBaseInstance.Initialize(gameObject, this);
+
         StateMachine.Initialize(IdleState);
     }
 
@@ -48,12 +69,6 @@ public class Enemy : MonoBehaviour, IDamageable, IMoveable
     {
         StateMachine.CurrentEnemyState.PhysicsUpdate();
     }
-
-    #region Idle Variables
-     public float RandomMovementRange = 5f;
-     public float RandomMovementSpeed = 1f;
-
-    #endregion
 
     #region Movement Functions
     public void MoveEnemy(Vector2 velocity)
@@ -104,6 +119,19 @@ public class Enemy : MonoBehaviour, IDamageable, IMoveable
 
     #endregion
 
+    #region Distance Checks
+
+    public void SetAggroStatus(bool isAggroed)
+    {
+        IsAggroed = isAggroed;
+    }
+
+    public void SetStrikingDistanceBool(bool isWithStrikingDistance)
+    {
+        IsWithinStrikingDistance = isWithStrikingDistance;
+    }
+    #endregion
+
     #region Animation Triggers
 
     private void AnimationTriggerEvent(AnimationTriggerType triggerType)
@@ -111,6 +139,7 @@ public class Enemy : MonoBehaviour, IDamageable, IMoveable
         //TODO: 根据不同的触发类型执行相应的逻辑
         StateMachine.CurrentEnemyState.AnimationTriggerEvent(triggerType);
     }
+
 
     public enum AnimationTriggerType
     {
