@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyIdleSOBase : ScriptableObject
+public class EnemyChaseSOBase : ScriptableObject
 {
     protected Enemy enemy;
     protected Transform transform;
@@ -24,10 +24,17 @@ public class EnemyIdleSOBase : ScriptableObject
     public virtual void DoExitLogic() { ResetValues(); }
     public virtual void DoFrameUpdateLogic()
     {
-        if(enemy.IsAggroed)
+        //敌人进入远程攻击状态
+        if (enemy.IsWithinStrikingDistance)
         {
-            enemy.StateMachine.ChangeState(enemy.ChaseState);
-            
+            enemy.StateMachine.ChangeState(enemy.AttackState);
+
+        }
+        
+        //如果敌人失去仇恨则切换到闲置状态
+        if (!enemy.IsAggroed)
+        {
+            enemy.StateMachine.ChangeState(enemy.IdleState);
         }
     }
     public virtual void DoPhysicsLogic() { }

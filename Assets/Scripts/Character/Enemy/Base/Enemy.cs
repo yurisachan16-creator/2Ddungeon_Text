@@ -12,8 +12,10 @@ public class Enemy : MonoBehaviour, IDamageable, IMoveable, ITriggercheckable
 
     public Rigidbody2D RB { get; set; }
     public bool IsFacingRight { get; set; } = true;
-    public bool IsAggroed { get; set; }
-    public bool IsWithinStrikingDistance { get; set; }
+    public bool IsAggroed { get; set; } //激怒状态
+    public bool IsWithinStrikingDistance { get; set; }  // 远程攻击距离
+    public bool IsWithinMeleeDistance { get ; set ; }    // 近战攻击距离
+    public bool IsWithinEscapeDistance { get; set; }   // 远程逃跑距离
 
     #region Enemy State Machine Variables
     public EnemyStateMachine StateMachine { get; set; }
@@ -31,6 +33,7 @@ public class Enemy : MonoBehaviour, IDamageable, IMoveable, ITriggercheckable
     public EnemyIdleSOBase EnemyIdleBaseInstance { get; private set; }
     public EnemyChaseSOBase EnemyChaseBaseInstance { get; private set; }
     public EnemyAttackSOBase EnemyAttackBaseInstance { get; private set; }
+    
     #endregion
 
     void Awake()
@@ -79,18 +82,16 @@ public class Enemy : MonoBehaviour, IDamageable, IMoveable, ITriggercheckable
 
     public void CheckForLeftOrRightFacing(Vector2 velocity)
     {
-        if (IsFacingRight && velocity.x < 0)
+        if ((IsFacingRight && velocity.x < 0f) || (!IsFacingRight && velocity.x > 0f))
         {
-            Vector3 rotator = new Vector3(transform.rotation.x, 180f, transform.rotation.z);
-            transform.rotation = Quaternion.Euler(rotator);
-            IsFacingRight = !IsFacingRight;
+            Flip();
         }
-        else if (!IsFacingRight && velocity.x > 0)
-        {
-            Vector3 rotator = new Vector3(transform.rotation.x, 180f, transform.rotation.z);
-            transform.rotation = Quaternion.Euler(rotator);
-            IsFacingRight = !IsFacingRight;
-        }
+    }
+
+    public void Flip()
+    {
+        IsFacingRight = !IsFacingRight;
+        transform.Rotate(0f, 180f, 0f);
     }
     #endregion
 
@@ -130,6 +131,18 @@ public class Enemy : MonoBehaviour, IDamageable, IMoveable, ITriggercheckable
     {
         IsWithinStrikingDistance = isWithStrikingDistance;
     }
+
+    public void SetMeleeDistanceBool(bool isWithinMeleeDistance)
+    {
+        IsWithinMeleeDistance = isWithinMeleeDistance;
+    }
+
+    public void SetEscapeDistanceBool(bool isWithinEscapeDistance)
+    {
+        IsWithinEscapeDistance = isWithinEscapeDistance;
+    }
+
+
     #endregion
 
     #region Animation Triggers
@@ -140,6 +153,7 @@ public class Enemy : MonoBehaviour, IDamageable, IMoveable, ITriggercheckable
         StateMachine.CurrentEnemyState.AnimationTriggerEvent(triggerType);
     }
 
+    
 
     public enum AnimationTriggerType
     {

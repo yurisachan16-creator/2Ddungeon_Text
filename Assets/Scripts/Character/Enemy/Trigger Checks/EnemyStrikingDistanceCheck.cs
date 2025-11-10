@@ -18,6 +18,7 @@ public class EnemyStrikingDistanceCheck : MonoBehaviour
     {
         if (collision.gameObject == PlayerTarget)
         {
+             Debug.Log("<color=red>玩家进入了远程攻击范围！</color>");
             _enemy.SetStrikingDistanceBool(true);
         }
     }
@@ -26,6 +27,7 @@ public class EnemyStrikingDistanceCheck : MonoBehaviour
     {
         if (collision.gameObject == PlayerTarget)
         {
+                Debug.Log("<color=red>玩家离开了远程攻击范围！</color>");
             _enemy.SetStrikingDistanceBool(false);
         }
     }

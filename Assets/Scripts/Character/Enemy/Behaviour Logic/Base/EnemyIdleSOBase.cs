@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyChaseSOBase : ScriptableObject
+public class EnemyIdleSOBase : ScriptableObject
 {
     protected Enemy enemy;
     protected Transform transform;
@@ -16,15 +16,23 @@ public class EnemyChaseSOBase : ScriptableObject
         this.transform = gameObject.transform;
         this.enemy = enemy;
         
-
-        playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
+        // 添加空值检查
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        if (player != null)
+        {
+            playerTransform = player.transform;
+        }
+        else
+        {
+            Debug.LogWarning("EnemyIdleSOBase: 未找到带有 'Player' 标签的对象。");
+        }
     }
 
     public virtual void DoEnterLogic() { }
     public virtual void DoExitLogic() { ResetValues(); }
     public virtual void DoFrameUpdateLogic()
     {
-        if(enemy.IsWithinStrikingDistance)
+        if(enemy.IsAggroed)
         {
             enemy.StateMachine.ChangeState(enemy.ChaseState);
             

@@ -5,14 +5,14 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Attack-Single Straight Projectile", menuName = "Enemy Logic/Attack Logic/Single Straight Projectile")]
 public class EnemyAttackSingleStraightProjectile : EnemyAttackSOBase
 {
-    [SerializeField] private Rigidbody2D BulletPrefab;
-    [SerializeField] private float _timeBetweenShots = 2f;
-    [SerializeField] private float _timeTillExit = 3f;
-    [SerializeField] private float _distanceToCountExit = 3f;
-    [SerializeField] private float _bulletSpeed = 10f;
+    [SerializeField] private Rigidbody2D BulletPrefab;  // 子弹预制体
+    [SerializeField] private float _timeBetweenShots = 2f;  // 射击间隔时间
+    [SerializeField] private float _timeTillExit = 3f;  // 超出距离后切换状态所需时间
+    [SerializeField] private float _distanceToCountExit = 3f;  // 超出该距离后开始计时切换状态
+    [SerializeField] private float _bulletSpeed = 10f;  // 子弹速度
 
-    private float _timer;
-    private float _exitTimer;
+    private float _timer;   // 射击计时器
+    private float _exitTimer;   // 退出计时器
     
     public override void DoAnimationTriggerEventLogic(Enemy.AnimationTriggerType triggerType)
     {
@@ -33,7 +33,6 @@ public class EnemyAttackSingleStraightProjectile : EnemyAttackSOBase
     public override void DoFrameUpdateLogic()
     {
         base.DoFrameUpdateLogic();
-
         // 添加空值检查
         if (playerTransform == null)
         {
@@ -41,6 +40,26 @@ public class EnemyAttackSingleStraightProjectile : EnemyAttackSOBase
             return;
         }
 
+        //Debug.Log($"远程骷髅状态: IsWithinEscapeDistance={enemy.IsWithinEscapeDistance}, IsWithinStrikingDistance={enemy.IsWithinStrikingDistance}");
+
+        // --- 新增的最高优先级检查 ---
+        // 如果玩家太近了，立刻停止攻击，返回追逐状态（追逐状态会处理逃跑逻辑）
+        if (enemy.IsWithinEscapeDistance)
+        {
+            enemy.StateMachine.ChangeState(enemy.ChaseState);
+            return;
+        }
+
+        //如果外部触发器认为玩家已经不在攻击范围内，则返回追逐状态
+        if (!enemy.IsWithinStrikingDistance)
+        {
+            enemy.StateMachine.ChangeState(enemy.ChaseState);
+            return; // 直接返回，不再执行下面的攻击代码
+        }
+
+        
+
+        // 如果玩家在攻击范围内，敌人应该停下进行射击
         enemy.MoveEnemy(Vector2.zero);
 
         if (_timer > _timeBetweenShots)
@@ -60,19 +79,6 @@ public class EnemyAttackSingleStraightProjectile : EnemyAttackSOBase
             }
         }
         
-        if (Vector2.Distance(playerTransform.position, enemy.transform.position) > _distanceToCountExit)
-        {
-            _exitTimer += Time.deltaTime;
-            if (_exitTimer >= _timeTillExit)
-            {
-                enemy.StateMachine.ChangeState(enemy.ChaseState);
-            }
-        }
-        else
-        {
-            _exitTimer = 0f; // 修复：应该重置 exitTimer 而不是 timer
-        }
-        
         _timer += Time.deltaTime;
     }
 
@@ -81,7 +87,7 @@ public class EnemyAttackSingleStraightProjectile : EnemyAttackSOBase
         base.DoPhysicsLogic();
     }
 
-    public virtual void Initialize(GameObject gameObject, Enemy enemy)
+    public override void Initialize(GameObject gameObject, Enemy enemy)
     {
         this.gameObject = gameObject;
         this.transform = gameObject.transform;
